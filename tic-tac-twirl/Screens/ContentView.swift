@@ -8,14 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(GameViewModel.self) private var gameViewModel: GameViewModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            VStack(spacing: 0) {
+                SideView(isReversed : true)
+                    .rotationEffect(.degrees(180))
+                SideView()
+            }
+            BoardView()
+            if gameViewModel.gameStatus == .teamPicking {
+                VStack {
+                    Spacer()
+                    Button(action: {
+                        gameViewModel.startGame()
+                    }) {
+                        Text("bypass")
+                            .foregroundStyle(.white)
+                            .underline()
+                            .padding(.bottom)
+                    }
+                }
+            }
         }
-        .padding()
+        .ignoresSafeArea()
     }
 }
 

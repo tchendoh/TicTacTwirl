@@ -1,3 +1,11 @@
+//
+//  PlayerSideView.swift
+//  tic-tac-twirl
+//
+//  Created by Eric Chandonnet on 2024-10-19.
+//
+
+
 import SwiftUI
 
 struct PlayerSideView: View {
@@ -9,7 +17,6 @@ struct PlayerSideView: View {
     var body: some View {
         
         ZStack {
-            
             Image(systemName: player.team == .x ? "xmark" : "circle")
                 .resizable()
                 .fontWeight(.black)

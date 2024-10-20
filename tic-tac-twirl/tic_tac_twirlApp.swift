@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct tic_tac_twirlApp: App {
+    @State var gameViewModel = GameViewModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(gameViewModel)
         }
     }
 }

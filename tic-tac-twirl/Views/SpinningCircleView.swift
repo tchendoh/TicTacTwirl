@@ -1,3 +1,11 @@
+//
+//  SpinningCircleView.swift
+//  tic-tac-twirl
+//
+//  Created by Eric Chandonnet on 2024-10-19.
+//
+
+
 import SwiftUI
 
 struct SpinningCircleView: View {
@@ -7,6 +15,8 @@ struct SpinningCircleView: View {
 
     @State private var isAnimating: Bool = false
     @State private var isPressed: Bool = false
+    @State private var qtyPressed: Int = 0
+    
     
     @State private var circleHeight: CGFloat = 120
         
@@ -46,22 +56,13 @@ struct SpinningCircleView: View {
             }
             .onChange(of: isPressed) { oldValue, newValue in
                 if newValue == true {
-                    if isReversed {
-                        gameViewModel.playerTop.team = .ready
-                    } else {
-                        gameViewModel.playerBottom.team = .ready
-                    }
-                    if gameViewModel.playerTop.team == .ready &&
-                        gameViewModel.playerBottom.team == .ready {
+                    qtyPressed += 1
+                    if qtyPressed == 2 {
                         gameViewModel.startGame()
                     }
 
                 } else {
-                    if isReversed {
-                        gameViewModel.playerTop.team = .notPickedYet
-                    } else {
-                        gameViewModel.playerBottom.team = .notPickedYet
-                    }
+                    qtyPressed -= 1
                 }
 
             }
