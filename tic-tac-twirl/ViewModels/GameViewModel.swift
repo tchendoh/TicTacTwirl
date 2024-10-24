@@ -60,8 +60,7 @@ import Observation
         player1.isReady && player2.isReady
     }
     
-    func makeMove(at: SquarePosition)
-    {
-        game.makeMove(at: at)
+    func makeMove(position: SquarePosition) {
+        game.makeMove(position: position)
     }
 }

@@ -21,16 +21,16 @@ struct SquareView: View {
                     .foregroundStyle(isInWinningLine() ? Color("SquareWinBackground").gradient : Color("SquareBackground").gradient)
                     .onTapGesture {
                         if value == .empty {
-                            gameViewModel.makeMove(at: position)
+                            gameViewModel.makeMove(position: position)
                         }
                     }
                 
                 switch value {
-                case .x:
+                case .xMark:
                     Image(systemName: "xmark")
                         .font(.system(size: squareSize/2))
                         .fontWeight(.black)
-                case .o:
+                case .oMark:
                     Image(systemName: "circle")
                         .font(.system(size: squareSize/2))
                         .fontWeight(.black)
@@ -47,13 +47,11 @@ struct SquareView: View {
                 case .empty:
                     Spacer()
                 }
-                
-                
             }
             .frame(width: squareSize, height: squareSize)
             .wiggling(isWiggling: $isWiggling, rotationAmount: 3, bounceAmount: 2)
-            .onChange(of: value) { oldValue, newValue in
-                if value == .expiringO || value == .expiringX {
+            .onChange(of: value) { _, newValue in
+                if newValue == .expiringO || value == .expiringX {
                     isWiggling = true
                 } else {
                     isWiggling = false

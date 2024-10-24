@@ -1,13 +1,13 @@
 //
-//  tic_tac_twirlUITestsLaunchTests.swift
-//  tic-tac-twirlUITests
+//  TicTacTwirlUITestsLaunchTests.swift
+//  TicTacTwirlUITests
 //
 //  Created by Eric Chandonnet on 2024-10-16.
 //
 
 import XCTest
 
-final class tic_tac_twirlUITestsLaunchTests: XCTestCase {
+final class TicTacTwirlUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

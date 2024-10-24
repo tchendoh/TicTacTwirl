@@ -39,7 +39,6 @@ struct BoardView: View {
                 .disabled(gameViewModel.gameStatus != .gameOn)
                 Spacer()
                 
-                
             }
             Spacer()
         }

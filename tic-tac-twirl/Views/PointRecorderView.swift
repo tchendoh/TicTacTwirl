@@ -5,7 +5,6 @@
 //  Created by Eric Chandonnet on 2024-10-19.
 //
 
-
 import SwiftUI
 
 struct PointRecorderView: View {
@@ -33,7 +32,6 @@ struct PointRecorderView: View {
         )
     }
 }
-
 
 #Preview {
     PointRecorderView()

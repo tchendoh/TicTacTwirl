@@ -19,7 +19,6 @@ enum SquarePosition: CaseIterable {
     case bottomRight
 }
 
-
 struct Player {
     var team: Game.Team = .notPickedYet
     var isReady: Bool = false
@@ -47,45 +46,45 @@ struct Game {
     }
     
     enum Team {
-        case x, o
+        case xMark, oMark
         case notPickedYet
     }
 
     enum Turn {
-        case x
-        case o
+        case xMark
+        case oMark
         
         func getMark() -> SquareValue {
             switch self {
-            case .x:
-                return .x
-            case .o:
-                return .o
+            case .xMark:
+                return .xMark
+            case .oMark:
+                return .oMark
             }
         }
         
         func getExpiringMark() -> SquareValue {
             switch self {
-            case .x:
+            case .xMark:
                 return .expiringO
-            case .o:
+            case .oMark:
                 return .expiringX
             }
         }
         
         mutating func toggle() {
             switch self {
-            case .x:
-                self = .o
-            case .o:
-                self = .x
+            case .xMark:
+                self = .oMark
+            case .oMark:
+                self = .xMark
             }
         }
     }
 
-    var board: [SquarePosition:SquareValue] = [:]
+    var board: [SquarePosition: SquareValue] = [:]
     var status: Status = .teamPicking
-    var turn: Turn = .x
+    var turn: Turn = .xMark
     var currentMarks: [PlayerMove] = []
     var winningLine: [SquarePosition] = []
     var player1: Player = Player()
@@ -106,21 +105,19 @@ struct Game {
         status = .gameOn
     }
 
-    
     mutating func assignRandomTeamsToPlayers() {
-        let shuffledTeams = [Team.x, Team.o].shuffled()
+        let shuffledTeams = [Team.xMark, Team.oMark].shuffled()
         
         player1.team = shuffledTeams[0]
         player2.team = shuffledTeams[1]
     }
 
-    mutating func makeMove(at: SquarePosition) {
-        placeNewMark(position: at)
+    mutating func makeMove(position: SquarePosition) {
+        placeNewMark(position: position)
         
         if detectWin() {
             status = .gameOver
-        }
-        else {
+        } else {
             expireOldMark()
             turn.toggle()
         }
@@ -147,46 +144,41 @@ struct Game {
             return false
         }
         // Horizontal (3)
-        if (turn.getMark() == board[.topLeft] &&
+        if turn.getMark() == board[.topLeft] &&
             turn.getMark() == board[.topMiddle] &&
-            turn.getMark() == board[.topRight]) {
+            turn.getMark() == board[.topRight] {
             winningLine = [.topLeft, .topMiddle, .topRight]
-        }
-        else if (turn.getMark() == board[.middleLeft] &&
+        } else if turn.getMark() == board[.middleLeft] &&
                  turn.getMark() == board[.middle] &&
-                 turn.getMark() == board[.middleRight]) {
+                 turn.getMark() == board[.middleRight] {
             winningLine = [.middleLeft, .middle, .middleRight]
-        }
-        else if (turn.getMark() == board[.bottomLeft] &&
+        } else if turn.getMark() == board[.bottomLeft] &&
                  turn.getMark() == board[.bottomMiddle] &&
-                 turn.getMark() == board[.bottomRight]) {
+                 turn.getMark() == board[.bottomRight] {
             winningLine = [.bottomLeft, .bottomMiddle, .bottomRight]
         }
         // Vertical (3)
-        else if (turn.getMark() == board[.topLeft] &&
+        else if turn.getMark() == board[.topLeft] &&
                  turn.getMark() == board[.middleLeft] &&
-                 turn.getMark() == board[.bottomLeft]) {
+                 turn.getMark() == board[.bottomLeft] {
             winningLine = [.topLeft, .middleLeft, .bottomLeft]
-        }
-        else if (turn.getMark() == board[.topMiddle] &&
+        } else if turn.getMark() == board[.topMiddle] &&
                  turn.getMark() == board[.middle] &&
-                 turn.getMark() == board[.bottomMiddle]) {
+                 turn.getMark() == board[.bottomMiddle] {
             winningLine = [.topMiddle, .middle, .bottomMiddle]
-        }
-        else if (turn.getMark() == board[.topRight] &&
+        } else if turn.getMark() == board[.topRight] &&
                  turn.getMark() == board[.middleRight] &&
-                 turn.getMark() == board[.bottomRight]) {
+                 turn.getMark() == board[.bottomRight] {
             winningLine = [.topRight, .middleRight, .bottomRight]
         }
         // Diagonal (2)
-        else if (turn.getMark() == board[.topLeft] &&
+        else if turn.getMark() == board[.topLeft] &&
                  turn.getMark() == board[.middle] &&
-                 turn.getMark() == board[.bottomRight]) {
+                 turn.getMark() == board[.bottomRight] {
             winningLine = [.topLeft, .middle, .bottomRight]
-        }
-        else if (turn.getMark() == board[.topRight] &&
+        } else if turn.getMark() == board[.topRight] &&
                  turn.getMark() == board[.middle] &&
-                 turn.getMark() == board[.bottomLeft]) {
+                 turn.getMark() == board[.bottomLeft] {
             winningLine = [.topRight, .middle, .bottomLeft]
         }
         

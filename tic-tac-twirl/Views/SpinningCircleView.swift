@@ -5,7 +5,6 @@
 //  Created by Eric Chandonnet on 2024-10-19.
 //
 
-
 import SwiftUI
 
 struct SpinningCircleView: View {
@@ -15,8 +14,6 @@ struct SpinningCircleView: View {
 
     @State private var isAnimating: Bool = false
     @State private var isPressed: Bool = false
-    
-    
     @State private var circleHeight: CGFloat = 120
         
     var body: some View {
@@ -53,7 +50,7 @@ struct SpinningCircleView: View {
                 }
                 Spacer()
             }
-            .onChange(of: isPressed) { oldValue, newValue in
+            .onChange(of: isPressed) { _, newValue in
                 if newValue == true {
                     if isReversed {
                         gameViewModel.setTopPlayerAsReady()
