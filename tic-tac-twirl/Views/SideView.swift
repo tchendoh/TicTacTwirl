@@ -11,9 +11,8 @@ struct SideView: View {
     @Environment(GameViewModel.self) private var gameViewModel: GameViewModel
     var isReversed: Bool = false
     
-    
     var body: some View {
-        VStack (spacing: 0) {
+        VStack(spacing: 0) {
             VStack {
                 ZStack {
                     if isReversed {
@@ -35,8 +34,6 @@ struct SideView: View {
                         }
                     }
                     .padding(.top, 100)
-                    
-                    
                 }
             }
         }
@@ -47,7 +44,7 @@ struct SideView: View {
 
 #Preview {
     VStack(spacing: 0) {
-        SideView(isReversed : true)
+        SideView(isReversed: true)
             .rotationEffect(.degrees(180))
         SideView()
     }

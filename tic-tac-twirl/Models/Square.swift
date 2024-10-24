@@ -8,8 +8,8 @@
 import Foundation
 
 enum SquareValue {
-    case x
-    case o
+    case xMark
+    case oMark
     case expiringX
     case expiringO
     case empty

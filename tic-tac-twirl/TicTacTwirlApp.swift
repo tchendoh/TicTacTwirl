@@ -1,6 +1,6 @@
 //
-//  tic_tac_twirlApp.swift
-//  tic-tac-twirl
+//  TicTacTwirlApp.swift
+//  TicTacTwirl
 //
 //  Created by Eric Chandonnet on 2024-10-16.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct tic_tac_twirlApp: App {
+struct TicTacTwirlApp: App {
     @State var gameViewModel = GameViewModel()
 
     var body: some Scene {

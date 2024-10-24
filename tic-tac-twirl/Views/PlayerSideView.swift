@@ -5,7 +5,6 @@
 //  Created by Eric Chandonnet on 2024-10-19.
 //
 
-
 import SwiftUI
 
 struct PlayerSideView: View {
@@ -17,7 +16,7 @@ struct PlayerSideView: View {
     var body: some View {
         
         ZStack {
-            Image(systemName: player.team == .x ? "xmark" : "circle")
+            Image(systemName: player.team == .xMark ? "xmark" : "circle")
                 .resizable()
                 .fontWeight(.black)
                 .foregroundStyle(.white)
@@ -52,8 +51,8 @@ struct PlayerSideView: View {
         }
     }    
     func isCurrentPlayerTurn() -> Bool {
-        if ((player.team == .x && gameViewModel.turn == .x) ||
-            (player.team == .o && gameViewModel.turn == .o)) {
+        if (player.team == .xMark && gameViewModel.turn == .xMark) ||
+            (player.team == .oMark && gameViewModel.turn == .oMark) {
             return true
         } else {
             return false
@@ -67,9 +66,9 @@ struct PlayerSideView: View {
     ZStack {
         Color.blue
         VStack {
-            PlayerSideView(isReversed: true, player: Player(team: .o))
+            PlayerSideView(isReversed: true, player: Player(team: .oMark))
                 .rotationEffect(.degrees(180))
-            PlayerSideView(isReversed: false, player: Player(team: .x))
+            PlayerSideView(isReversed: false, player: Player(team: .xMark))
         }
     }
     .environment(GameViewModel())

@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                SideView(isReversed : true)
+                SideView(isReversed: true)
                     .rotationEffect(.degrees(180))
                 SideView()
             }

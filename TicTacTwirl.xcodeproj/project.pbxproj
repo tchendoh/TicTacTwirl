@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		57979F962CBFF9AA0021BFB6 /* tic-tac-twirl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tic-tac-twirl.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		57979FA62CBFF9AF0021BFB6 /* tic-tac-twirlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tic-tac-twirlTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		57979FB02CBFF9AF0021BFB6 /* tic-tac-twirlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tic-tac-twirlUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		57979F962CBFF9AA0021BFB6 /* TicTacTwirl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacTwirl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		57979FA62CBFF9AF0021BFB6 /* TicTacTwirlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacTwirlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		57979FB02CBFF9AF0021BFB6 /* TicTacTwirlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacTwirlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -35,14 +35,14 @@
 			path = "tic-tac-twirl";
 			sourceTree = "<group>";
 		};
-		57979FA92CBFF9AF0021BFB6 /* tic-tac-twirlTests */ = {
+		57979FA92CBFF9AF0021BFB6 /* TicTacTwirlTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "tic-tac-twirlTests";
+			path = TicTacTwirlTests;
 			sourceTree = "<group>";
 		};
-		57979FB32CBFF9AF0021BFB6 /* tic-tac-twirlUITests */ = {
+		57979FB32CBFF9AF0021BFB6 /* TicTacTwirlUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "tic-tac-twirlUITests";
+			path = TicTacTwirlUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,8 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				57979F982CBFF9AA0021BFB6 /* tic-tac-twirl */,
-				57979FA92CBFF9AF0021BFB6 /* tic-tac-twirlTests */,
-				57979FB32CBFF9AF0021BFB6 /* tic-tac-twirlUITests */,
+				57979FA92CBFF9AF0021BFB6 /* TicTacTwirlTests */,
+				57979FB32CBFF9AF0021BFB6 /* TicTacTwirlUITests */,
 				57979F972CBFF9AA0021BFB6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,9 +85,9 @@
 		57979F972CBFF9AA0021BFB6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				57979F962CBFF9AA0021BFB6 /* tic-tac-twirl.app */,
-				57979FA62CBFF9AF0021BFB6 /* tic-tac-twirlTests.xctest */,
-				57979FB02CBFF9AF0021BFB6 /* tic-tac-twirlUITests.xctest */,
+				57979F962CBFF9AA0021BFB6 /* TicTacTwirl.app */,
+				57979FA62CBFF9AF0021BFB6 /* TicTacTwirlTests.xctest */,
+				57979FB02CBFF9AF0021BFB6 /* TicTacTwirlUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,13 +95,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		57979F952CBFF9AA0021BFB6 /* tic-tac-twirl */ = {
+		57979F952CBFF9AA0021BFB6 /* TicTacTwirl */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 57979FBA2CBFF9AF0021BFB6 /* Build configuration list for PBXNativeTarget "tic-tac-twirl" */;
+			buildConfigurationList = 57979FBA2CBFF9AF0021BFB6 /* Build configuration list for PBXNativeTarget "TicTacTwirl" */;
 			buildPhases = (
 				57979F922CBFF9AA0021BFB6 /* Sources */,
 				57979F932CBFF9AA0021BFB6 /* Frameworks */,
 				57979F942CBFF9AA0021BFB6 /* Resources */,
+				573502392CCA845F00118C2C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -110,16 +111,16 @@
 			fileSystemSynchronizedGroups = (
 				57979F982CBFF9AA0021BFB6 /* tic-tac-twirl */,
 			);
-			name = "tic-tac-twirl";
+			name = TicTacTwirl;
 			packageProductDependencies = (
 			);
 			productName = "tic-tac-twirl";
-			productReference = 57979F962CBFF9AA0021BFB6 /* tic-tac-twirl.app */;
+			productReference = 57979F962CBFF9AA0021BFB6 /* TicTacTwirl.app */;
 			productType = "com.apple.product-type.application";
 		};
-		57979FA52CBFF9AF0021BFB6 /* tic-tac-twirlTests */ = {
+		57979FA52CBFF9AF0021BFB6 /* TicTacTwirlTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 57979FBD2CBFF9AF0021BFB6 /* Build configuration list for PBXNativeTarget "tic-tac-twirlTests" */;
+			buildConfigurationList = 57979FBD2CBFF9AF0021BFB6 /* Build configuration list for PBXNativeTarget "TicTacTwirlTests" */;
 			buildPhases = (
 				57979FA22CBFF9AF0021BFB6 /* Sources */,
 				57979FA32CBFF9AF0021BFB6 /* Frameworks */,
@@ -131,18 +132,18 @@
 				57979FA82CBFF9AF0021BFB6 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				57979FA92CBFF9AF0021BFB6 /* tic-tac-twirlTests */,
+				57979FA92CBFF9AF0021BFB6 /* TicTacTwirlTests */,
 			);
-			name = "tic-tac-twirlTests";
+			name = TicTacTwirlTests;
 			packageProductDependencies = (
 			);
 			productName = "tic-tac-twirlTests";
-			productReference = 57979FA62CBFF9AF0021BFB6 /* tic-tac-twirlTests.xctest */;
+			productReference = 57979FA62CBFF9AF0021BFB6 /* TicTacTwirlTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		57979FAF2CBFF9AF0021BFB6 /* tic-tac-twirlUITests */ = {
+		57979FAF2CBFF9AF0021BFB6 /* TicTacTwirlUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 57979FC02CBFF9AF0021BFB6 /* Build configuration list for PBXNativeTarget "tic-tac-twirlUITests" */;
+			buildConfigurationList = 57979FC02CBFF9AF0021BFB6 /* Build configuration list for PBXNativeTarget "TicTacTwirlUITests" */;
 			buildPhases = (
 				57979FAC2CBFF9AF0021BFB6 /* Sources */,
 				57979FAD2CBFF9AF0021BFB6 /* Frameworks */,
@@ -154,13 +155,13 @@
 				57979FB22CBFF9AF0021BFB6 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				57979FB32CBFF9AF0021BFB6 /* tic-tac-twirlUITests */,
+				57979FB32CBFF9AF0021BFB6 /* TicTacTwirlUITests */,
 			);
-			name = "tic-tac-twirlUITests";
+			name = TicTacTwirlUITests;
 			packageProductDependencies = (
 			);
 			productName = "tic-tac-twirlUITests";
-			productReference = 57979FB02CBFF9AF0021BFB6 /* tic-tac-twirlUITests.xctest */;
+			productReference = 57979FB02CBFF9AF0021BFB6 /* TicTacTwirlUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +187,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 57979F912CBFF9AA0021BFB6 /* Build configuration list for PBXProject "tic-tac-twirl" */;
+			buildConfigurationList = 57979F912CBFF9AA0021BFB6 /* Build configuration list for PBXProject "TicTacTwirl" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -195,14 +196,17 @@
 			);
 			mainGroup = 57979F8D2CBFF9AA0021BFB6;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				573502382CCA82D300118C2C /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 57979F972CBFF9AA0021BFB6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				57979F952CBFF9AA0021BFB6 /* tic-tac-twirl */,
-				57979FA52CBFF9AF0021BFB6 /* tic-tac-twirlTests */,
-				57979FAF2CBFF9AF0021BFB6 /* tic-tac-twirlUITests */,
+				57979F952CBFF9AA0021BFB6 /* TicTacTwirl */,
+				57979FA52CBFF9AF0021BFB6 /* TicTacTwirlTests */,
+				57979FAF2CBFF9AF0021BFB6 /* TicTacTwirlUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -231,6 +235,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		573502392CCA845F00118C2C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		57979F922CBFF9AA0021BFB6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -258,12 +284,12 @@
 /* Begin PBXTargetDependency section */
 		57979FA82CBFF9AF0021BFB6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 57979F952CBFF9AA0021BFB6 /* tic-tac-twirl */;
+			target = 57979F952CBFF9AA0021BFB6 /* TicTacTwirl */;
 			targetProxy = 57979FA72CBFF9AF0021BFB6 /* PBXContainerItemProxy */;
 		};
 		57979FB22CBFF9AF0021BFB6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 57979F952CBFF9AA0021BFB6 /* tic-tac-twirl */;
+			target = 57979F952CBFF9AA0021BFB6 /* TicTacTwirl */;
 			targetProxy = 57979FB12CBFF9AF0021BFB6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -306,7 +332,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -369,7 +395,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -463,7 +489,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tic-tac-twirl.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/tic-tac-twirl";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TicTacTwirl.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TicTacTwirl";
 			};
 			name = Debug;
 		};
@@ -482,7 +508,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tic-tac-twirl.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/tic-tac-twirl";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TicTacTwirl.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TicTacTwirl";
 			};
 			name = Release;
 		};
@@ -523,7 +549,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		57979F912CBFF9AA0021BFB6 /* Build configuration list for PBXProject "tic-tac-twirl" */ = {
+		57979F912CBFF9AA0021BFB6 /* Build configuration list for PBXProject "TicTacTwirl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				57979FB82CBFF9AF0021BFB6 /* Debug */,
@@ -532,7 +558,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		57979FBA2CBFF9AF0021BFB6 /* Build configuration list for PBXNativeTarget "tic-tac-twirl" */ = {
+		57979FBA2CBFF9AF0021BFB6 /* Build configuration list for PBXNativeTarget "TicTacTwirl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				57979FBB2CBFF9AF0021BFB6 /* Debug */,
@@ -541,7 +567,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		57979FBD2CBFF9AF0021BFB6 /* Build configuration list for PBXNativeTarget "tic-tac-twirlTests" */ = {
+		57979FBD2CBFF9AF0021BFB6 /* Build configuration list for PBXNativeTarget "TicTacTwirlTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				57979FBE2CBFF9AF0021BFB6 /* Debug */,
@@ -550,7 +576,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		57979FC02CBFF9AF0021BFB6 /* Build configuration list for PBXNativeTarget "tic-tac-twirlUITests" */ = {
+		57979FC02CBFF9AF0021BFB6 /* Build configuration list for PBXNativeTarget "TicTacTwirlUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				57979FC12CBFF9AF0021BFB6 /* Debug */,
@@ -560,6 +586,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		573502382CCA82D300118C2C /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.57.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 57979F8E2CBFF9AA0021BFB6 /* Project object */;
 }
