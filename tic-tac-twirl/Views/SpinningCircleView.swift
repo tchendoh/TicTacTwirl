@@ -55,7 +55,6 @@ struct SpinningCircleView: View {
             }
             .onChange(of: isPressed) { oldValue, newValue in
                 if newValue == true {
-                    print("on")
                     if isReversed {
                         gameViewModel.setTopPlayerAsReady()
                     } else {
@@ -63,7 +62,6 @@ struct SpinningCircleView: View {
                     }
 
                 } else {
-                    print("off")
                     if isReversed {
                         gameViewModel.setTopPlayerAsNotReady()
                     } else {
