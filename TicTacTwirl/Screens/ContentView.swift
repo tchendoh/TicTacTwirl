@@ -25,9 +25,9 @@ struct ContentView: View {
             if gameViewModel.gameStatus == .teamPicking {
                 VStack {
                     Spacer()
-                    Button(action: {
+                    Button {
                         gameViewModel.startGame()
-                    }) {
+                    } label: {
                         Text("bypass")
                             .foregroundStyle(.white)
                             .underline()

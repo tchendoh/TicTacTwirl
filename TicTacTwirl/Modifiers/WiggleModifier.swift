@@ -17,7 +17,8 @@ struct AnimationUtils {
     }
     
     static func randomize(interval: TimeInterval, withVariance variance: Double) -> TimeInterval {
-        let random = (Double(arc4random_uniform(1000)) - 500.0) / 500.0
+        // let random = (Double(arc4random_uniform(1000)) - 500.0) / 500.0
+        let random = Double.random(in: -500.0...500.0) / 500.0
         return interval + variance * random
     }
 }
@@ -51,9 +52,17 @@ struct WiggleBounceModifier: GeometryEffect {
 
 extension View {
     func wiggling(isWiggling: Binding<Bool>, rotationAmount: Double = 3, bounceAmount: Double = 1) -> some View {
-        self
+        let wiggleAnimation = AnimationUtils.wiggleAnimation(
+            interval: 0.3,
+            variance: 0.025
+        ).repeatForever(autoreverses: true)
+        
+        return self
             .modifier(WiggleRotationModifier(isWiggling: isWiggling, rotationAmount: rotationAmount))
             .modifier(WiggleBounceModifier(amount: isWiggling.wrappedValue ? 1 : 0, bounceAmount: bounceAmount))
-            .animation(isWiggling.wrappedValue ? AnimationUtils.wiggleAnimation(interval: 0.3, variance: 0.025).repeatForever(autoreverses: true) : .default, value: isWiggling.wrappedValue)
+            .animation(
+                isWiggling.wrappedValue ? wiggleAnimation : .default,
+                value: isWiggling.wrappedValue
+            )
     }
 }

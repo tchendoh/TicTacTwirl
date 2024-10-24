@@ -30,9 +30,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		57979F982CBFF9AA0021BFB6 /* tic-tac-twirl */ = {
+		57979F982CBFF9AA0021BFB6 /* TicTacTwirl */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "tic-tac-twirl";
+			path = TicTacTwirl;
 			sourceTree = "<group>";
 		};
 		57979FA92CBFF9AF0021BFB6 /* TicTacTwirlTests */ = {
@@ -75,7 +75,7 @@
 		57979F8D2CBFF9AA0021BFB6 = {
 			isa = PBXGroup;
 			children = (
-				57979F982CBFF9AA0021BFB6 /* tic-tac-twirl */,
+				57979F982CBFF9AA0021BFB6 /* TicTacTwirl */,
 				57979FA92CBFF9AF0021BFB6 /* TicTacTwirlTests */,
 				57979FB32CBFF9AF0021BFB6 /* TicTacTwirlUITests */,
 				57979F972CBFF9AA0021BFB6 /* Products */,
@@ -109,7 +109,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				57979F982CBFF9AA0021BFB6 /* tic-tac-twirl */,
+				57979F982CBFF9AA0021BFB6 /* TicTacTwirl */,
 			);
 			name = TicTacTwirl;
 			packageProductDependencies = (
@@ -421,7 +421,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"tic-tac-twirl/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TicTacTwirl/Preview Content\"";
 				DEVELOPMENT_TEAM = T8DKX94TR7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -451,7 +451,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"tic-tac-twirl/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TicTacTwirl/Preview Content\"";
 				DEVELOPMENT_TEAM = T8DKX94TR7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
