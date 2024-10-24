@@ -27,10 +27,10 @@ struct SideView: View {
                             SpinningCircleView(isReversed: isReversed)
                         } else {
                             if isReversed {
-                                PlayerSideView(player: gameViewModel.playerTop)
+                                PlayerSideView(player: gameViewModel.player2)
                                 
                             } else {
-                                PlayerSideView(player: gameViewModel.playerBottom)
+                                PlayerSideView(player: gameViewModel.player1)
                             }
                         }
                     }

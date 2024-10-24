@@ -9,6 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(GameViewModel.self) private var gameViewModel: GameViewModel
+    @State var bothButtonPressed: [Bool: Bool] = [
+        true: false,
+        false: false
+    ]
     
     var body: some View {
         ZStack {
@@ -38,4 +42,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(GameViewModel())
 }

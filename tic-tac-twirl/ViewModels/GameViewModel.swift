@@ -16,16 +16,15 @@ import Observation
     var turn: Game.Turn {
         game.turn
     }
-    var playerTop: Player {
-        game.playerTop
-    }
-    var playerBottom: Player {
-        game.playerBottom
-    }
     var winningLine: [SquarePosition] {
         game.winningLine
     }
-
+    var player1: Player {
+        game.player1
+    }
+    var player2: Player {
+        game.player2
+    }
 
     init() {
         game = Game()
@@ -33,6 +32,32 @@ import Observation
     
     func startGame() {
         game.startGame()
+    }
+    
+    func setTopPlayerAsReady() {
+        game.player1.setAsReady()
+        if areBothPlayersReady() {
+            startGame()
+        }
+    }
+
+    func setBottomPlayerAsReady() {
+        game.player2.setAsReady()
+        if areBothPlayersReady() {
+            startGame()
+        }
+    }
+
+    func setTopPlayerAsNotReady() {
+        game.player1.setAsNotReady()
+    }
+    
+    func setBottomPlayerAsNotReady() {
+        game.player2.setAsNotReady()
+    }
+
+    private func areBothPlayersReady() -> Bool {
+        player1.isReady && player2.isReady
     }
     
     func makeMove(at: SquarePosition)

@@ -15,7 +15,6 @@ struct SpinningCircleView: View {
 
     @State private var isAnimating: Bool = false
     @State private var isPressed: Bool = false
-    @State private var qtyPressed: Int = 0
     
     
     @State private var circleHeight: CGFloat = 120
@@ -56,16 +55,23 @@ struct SpinningCircleView: View {
             }
             .onChange(of: isPressed) { oldValue, newValue in
                 if newValue == true {
-                    qtyPressed += 1
-                    if qtyPressed == 2 {
-                        gameViewModel.startGame()
+                    print("on")
+                    if isReversed {
+                        gameViewModel.setTopPlayerAsReady()
+                    } else {
+                        gameViewModel.setBottomPlayerAsReady()
                     }
 
                 } else {
-                    qtyPressed -= 1
+                    print("off")
+                    if isReversed {
+                        gameViewModel.setTopPlayerAsNotReady()
+                    } else {
+                        gameViewModel.setBottomPlayerAsNotReady()
+                    }
                 }
-
             }
+
         }
     }
 }

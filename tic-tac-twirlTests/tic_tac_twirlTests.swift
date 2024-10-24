@@ -12,6 +12,8 @@ final class tic_tac_twirlTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        var game = Game()
+        game.startGame()
     }
 
     override func tearDownWithError() throws {

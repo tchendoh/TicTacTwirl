@@ -19,9 +19,19 @@ enum SquarePosition: CaseIterable {
     case bottomRight
 }
 
+
 struct Player {
     var team: Game.Team = .notPickedYet
+    var isReady: Bool = false
     var score: Int = 0
+    
+    mutating func setAsReady() {
+        isReady = true
+    }
+
+    mutating func setAsNotReady() {
+        isReady = false
+    }
 }
 
 struct PlayerMove {
@@ -78,8 +88,8 @@ struct Game {
     var turn: Turn = .x
     var currentMarks: [PlayerMove] = []
     var winningLine: [SquarePosition] = []
-    var playerTop: Player = Player()
-    var playerBottom: Player  = Player()
+    var player1: Player = Player()
+    var player2: Player = Player()
 
     init() {
         createBoard()
@@ -100,8 +110,8 @@ struct Game {
     mutating func assignRandomTeamsToPlayers() {
         let shuffledTeams = [Team.x, Team.o].shuffled()
         
-        playerTop.team = shuffledTeams[0]
-        playerBottom.team = shuffledTeams[1]
+        player1.team = shuffledTeams[0]
+        player2.team = shuffledTeams[1]
     }
 
     mutating func makeMove(at: SquarePosition) {
