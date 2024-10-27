@@ -112,6 +112,10 @@ struct Game {
         player2.team = shuffledTeams[1]
     }
 
+    func areBothPlayersReady() -> Bool {
+        player1.isReady && player2.isReady
+    }
+
     mutating func makeMove(position: SquarePosition) {
         placeNewMark(position: position)
         
@@ -123,7 +127,7 @@ struct Game {
         }
     }
 
-    mutating func placeNewMark(position: SquarePosition) {
+    mutating private func placeNewMark(position: SquarePosition) {
         board[position] = turn.getMark()
         currentMarks.append(PlayerMove(squarePosition: position, mark: turn.getMark()))
 

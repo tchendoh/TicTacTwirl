@@ -36,14 +36,14 @@ import Observation
     
     func setTopPlayerAsReady() {
         game.player1.setAsReady()
-        if areBothPlayersReady() {
+        if game.areBothPlayersReady() {
             startGame()
         }
     }
 
     func setBottomPlayerAsReady() {
         game.player2.setAsReady()
-        if areBothPlayersReady() {
+        if game.areBothPlayersReady() {
             startGame()
         }
     }
@@ -54,10 +54,6 @@ import Observation
     
     func setBottomPlayerAsNotReady() {
         game.player2.setAsNotReady()
-    }
-
-    private func areBothPlayersReady() -> Bool {
-        player1.isReady && player2.isReady
     }
     
     func makeMove(position: SquarePosition) {
