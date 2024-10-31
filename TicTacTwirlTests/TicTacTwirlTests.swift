@@ -20,13 +20,13 @@ final class TicTacTwirlTests: XCTestCase {
     func test_Game_InitialState_ShouldHaveEmptyBoard() throws {
         let game = Game()
 
-        XCTAssertTrue(game.board.count == 9, "Board should have 9 squares.")
+        XCTAssertEqual(game.board.count, 9, "Board should always have 9 squares.")
     }
 
     func test_Game_InitialState_ShouldBeInTeamPickingStatus() throws {
         let game = Game()
 
-        XCTAssertTrue(game.status == .teamPicking, "Game should start in teamPicking status.")
+        XCTAssertEqual(game.status, .teamPicking, "Game should start in teamPicking status.")
     }
 
     func test_Game_InitialState_ShouldHavePlayersNotReady() throws {
@@ -69,15 +69,17 @@ final class TicTacTwirlTests: XCTestCase {
             }
         }
 
-        XCTAssert(xCount > 400 && xCount < 600)
-        XCTAssert(oCount > 400 && oCount < 600)
+        XCTAssertGreaterThan(xCount, 400)
+        XCTAssertGreaterThan(oCount, 400)
+        XCTAssertLessThan(xCount, 600)
+        XCTAssertLessThan(oCount, 600)
     }
 
     func test_Game_StartGame_ShouldChangeStatusToGameOn() throws {
         var game = Game()
         game.startGame()
 
-        XCTAssert(game.status == .gameOn)
+        XCTAssertEqual(game.status, .gameOn)
     }
 
     // MARK: Tests de gestion des joueurs
@@ -111,7 +113,10 @@ final class TicTacTwirlTests: XCTestCase {
 
     func test_Game_StartGame_ShouldKnowWhenBothPlayersAreReady() throws {
         var game = Game()
+
         game.player1.setAsReady()
+        XCTAssertFalse(game.areBothPlayersReady())
+
         game.player2.setAsReady()
         XCTAssertTrue(game.areBothPlayersReady())
     }
@@ -122,16 +127,16 @@ final class TicTacTwirlTests: XCTestCase {
         game.makeMove(position: .bottomLeft)
 
         XCTAssertNotNil(game.board[.bottomLeft])
-        XCTAssertTrue(game.board[.bottomLeft] == .xMark)
+        XCTAssertEqual(game.board[.bottomLeft], .xMark)
     }
 
     func test_Game_MakeMove_ShouldToggleTurn() throws {
         var game = Game()
-        XCTAssertTrue(game.turn.getMark() == .xMark)
+        XCTAssertEqual(game.turn.getMark(), .xMark)
         game.makeMove(position: .bottomRight)
-        XCTAssertTrue(game.turn.getMark() == .oMark)
+        XCTAssertEqual(game.turn.getMark(), .oMark)
         game.makeMove(position: .topLeft)
-        XCTAssertTrue(game.turn.getMark() == .xMark)
+        XCTAssertEqual(game.turn.getMark(), .xMark)
     }
 
     func test_Game_MakeMove_ShouldRecordToCurrentMarks() throws {
@@ -139,8 +144,8 @@ final class TicTacTwirlTests: XCTestCase {
         let squarePosition: SquarePosition = .topMiddle
         game.makeMove(position: squarePosition)
 
-        XCTAssertTrue(game.currentMarks.first?.mark == .xMark)
-        XCTAssertTrue(game.currentMarks.first?.squarePosition == squarePosition)
+        XCTAssertEqual(game.currentMarks.first?.mark, .xMark)
+        XCTAssertEqual(game.currentMarks.first?.squarePosition, squarePosition)
     }
 
     func test_Game_SixthMove_ShouldGiveFirstMarkExpiringStatus() throws {
@@ -153,11 +158,11 @@ final class TicTacTwirlTests: XCTestCase {
         game.makeMove(position: .middleLeft)
 
         var unwrappedMark = try XCTUnwrap(game.board[firstPosition])
-        XCTAssertTrue(unwrappedMark == .xMark)
+        XCTAssertEqual(unwrappedMark, .xMark)
 
         game.makeMove(position: .topLeft)
         unwrappedMark = try XCTUnwrap(game.board[firstPosition])
-        XCTAssertTrue(unwrappedMark == .expiringX)
+        XCTAssertEqual(unwrappedMark, .expiringX)
     }
 
     func test_Game_SeventhMove_ShoulExpireFirstMark() throws {
@@ -171,36 +176,160 @@ final class TicTacTwirlTests: XCTestCase {
         game.makeMove(position: .topLeft)
         game.makeMove(position: .middle)
         let unwrappedMark = try XCTUnwrap(game.board[firstPosition])
-        XCTAssertTrue(unwrappedMark == .empty)
-        XCTAssertTrue(game.currentMarks.count == 6)
+        XCTAssertEqual(unwrappedMark, .empty)
+        XCTAssertEqual(game.currentMarks.count, 6)
     }
 
     // MARK: Détection de victoire, huit possiblités
     func test_Game_ThreeHorizontalMarks1_ShouldDetectWin() throws {
+        //        x | x | x
+        //       -----------
+        //          |   |
+        //       -----------
+        //        o | o |
+
         var game = Game()
         game.makeMove(position: .topLeft)
         game.makeMove(position: .bottomLeft)
         game.makeMove(position: .topMiddle)
         game.makeMove(position: .bottomMiddle)
         game.makeMove(position: .topRight)
-        XCTAssertTrue(game.status == .gameOver) // Est-ce que ça devrait être un test séparé?
-        XCTAssertTrue(game.winningLine.contains(.topLeft)) // Est-ce que ça devrait être un test séparé?
+        XCTAssertEqual(game.status, .gameOver)
+        XCTAssertTrue(game.winningLine.contains(.topLeft))
         XCTAssertTrue(game.winningLine.contains(.topMiddle))
         XCTAssertTrue(game.winningLine.contains(.topRight))
     }
+
     func test_Game_ThreeHorizontalMarks2_ShouldDetectWin() throws {
+        //          |   |
+        //       -----------
+        //        x | x | x
+        //       -----------
+        //        o | o |
+
+        var game = Game()
+        game.makeMove(position: .middleLeft)
+        game.makeMove(position: .bottomLeft)
+        game.makeMove(position: .middle)
+        game.makeMove(position: .bottomMiddle)
+        game.makeMove(position: .middleRight)
+        XCTAssertEqual(game.status, .gameOver)
+        XCTAssertTrue(game.winningLine.contains(.middleLeft))
+        XCTAssertTrue(game.winningLine.contains(.middle))
+        XCTAssertTrue(game.winningLine.contains(.middleRight))
     }
+
     func test_Game_ThreeHorizontalMarks3_ShouldDetectWin() throws {
+        //        x | x |
+        //       -----------
+        //          | x |
+        //       -----------
+        //        o | o | o
+
+        var game = Game()
+        game.makeMove(position: .topLeft)
+        game.makeMove(position: .bottomLeft)
+        game.makeMove(position: .topMiddle)
+        game.makeMove(position: .bottomMiddle)
+        game.makeMove(position: .middle)
+        game.makeMove(position: .bottomRight)
+        XCTAssertEqual(game.status, .gameOver)
+        XCTAssertTrue(game.winningLine.contains(.bottomLeft))
+        XCTAssertTrue(game.winningLine.contains(.bottomMiddle))
+        XCTAssertTrue(game.winningLine.contains(.bottomRight))
     }
+
     func test_Game_ThreeVerticalMarks1_ShouldDetectWin() throws {
+        //        x | o |
+        //       -----------
+        //        x |   |
+        //       -----------
+        //        x | o |
+
+        var game = Game()
+        game.makeMove(position: .topLeft)
+        game.makeMove(position: .topMiddle)
+        game.makeMove(position: .middleLeft)
+        game.makeMove(position: .bottomMiddle)
+        game.makeMove(position: .bottomLeft)
+        XCTAssertEqual(game.status, .gameOver)
+        XCTAssertTrue(game.winningLine.contains(.topLeft))
+        XCTAssertTrue(game.winningLine.contains(.middleLeft))
+        XCTAssertTrue(game.winningLine.contains(.bottomLeft))
     }
     func test_Game_ThreeVerticalMarks2_ShouldDetectWin() throws {
+        //        x | o |
+        //       -----------
+        //          | o | x
+        //       -----------
+        //        x | o |
+
+        var game = Game()
+        game.makeMove(position: .topLeft)
+        game.makeMove(position: .topMiddle)
+        game.makeMove(position: .middleRight)
+        game.makeMove(position: .bottomMiddle)
+        game.makeMove(position: .bottomLeft)
+        game.makeMove(position: .middle)
+        XCTAssertEqual(game.status, .gameOver)
+        XCTAssertTrue(game.winningLine.contains(.topMiddle))
+        XCTAssertTrue(game.winningLine.contains(.bottomMiddle))
+        XCTAssertTrue(game.winningLine.contains(.middle))
     }
     func test_Game_ThreeVerticalMarks3_ShouldDetectWin() throws {
+        //          | o | x
+        //       -----------
+        //          |   | x
+        //       -----------
+        //          | o | x
+
+        var game = Game()
+        game.makeMove(position: .topRight)
+        game.makeMove(position: .topMiddle)
+        game.makeMove(position: .middleRight)
+        game.makeMove(position: .bottomMiddle)
+        game.makeMove(position: .bottomRight)
+        XCTAssertEqual(game.status, .gameOver)
+        XCTAssertTrue(game.winningLine.contains(.topRight))
+        XCTAssertTrue(game.winningLine.contains(.middleRight))
+        XCTAssertTrue(game.winningLine.contains(.bottomRight))
     }
     func test_Game_ThreeDiagonalMarks1_ShouldDetectWin() throws {
+        //          | o | x
+        //       -----------
+        //          | x |
+        //       -----------
+        //        x | o |
+
+        var game = Game()
+        game.makeMove(position: .topRight)
+        game.makeMove(position: .topMiddle)
+        game.makeMove(position: .middle)
+        game.makeMove(position: .bottomMiddle)
+        game.makeMove(position: .bottomLeft)
+        XCTAssertEqual(game.status, .gameOver)
+        XCTAssertTrue(game.winningLine.contains(.topRight))
+        XCTAssertTrue(game.winningLine.contains(.middle))
+        XCTAssertTrue(game.winningLine.contains(.bottomLeft))
     }
     func test_Game_ThreeDiagonalMarks2_ShouldDetectWin() throws {
+        //        o |   | x
+        //       -----------
+        //          | o |
+        //       -----------
+        //        x | x | o
+
+        var game = Game()
+        game.makeMove(position: .topRight)
+        game.makeMove(position: .topLeft)
+        game.makeMove(position: .bottomLeft)
+        game.makeMove(position: .middle)
+        game.makeMove(position: .bottomMiddle)
+        game.makeMove(position: .bottomRight)
+        XCTAssertEqual(game.status, .gameOver)
+        XCTAssertTrue(game.winningLine.contains(.topLeft))
+        XCTAssertTrue(game.winningLine.contains(.middle))
+        XCTAssertTrue(game.winningLine.contains(.bottomRight))
     }
 
     func test_Game_WinningMove_ShouldSetGameOverStatus() throws {
