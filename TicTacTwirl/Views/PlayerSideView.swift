@@ -13,20 +13,48 @@ struct PlayerSideView: View {
     var isReversed: Bool = false
     var player: Player
 
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
     var body: some View {
         
         ZStack {
-            Image(systemName: player.team == .xMark ? "xmark" : "circle")
-                .resizable()
-                .fontWeight(.black)
-                .foregroundStyle(.white)
-                .aspectRatio(contentMode: .fill)
-                .rotation3DEffect(.degrees(40),
-                                  axis: (x: 1.0, y: 1, z: 0.0),
-                                  anchor: .center,
-                                  anchorZ: 0,
-                                  perspective: 1)
-                .opacity(0.1)
+            LazyVGrid(columns: columns, spacing: 10) {
+                // Boucle pour remplir le conteneur de 30 images identiques
+                ForEach(0..<200) { _ in
+                    Image(systemName: player.team == .xMark ? "xmark" : "circle")
+                        .resizable()
+                        .foregroundStyle(.white)
+                        .fontWeight(.heavy)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 25, height: 25)
+                        .opacity(isCurrentPlayerTurn() ? 0.5 : 0.1)
+                }
+            }
+            .padding()
+            
+//            Image(systemName: player.team == .xMark ? "xmark" : "circle")
+//                .resizable()
+//                .fontWeight(.black)
+//                .foregroundStyle(.white)
+//                .aspectRatio(contentMode: .fill)
+//                .rotation3DEffect(.degrees(40),
+//                                  axis: (x: 1.0, y: 1, z: 0.0),
+//                                  anchor: .center,
+//                                  anchorZ: 0,
+//                                  perspective: 1)
+//                .opacity(0.1)
             
             if gameViewModel.gameStatus == .gameOn {
                 if isCurrentPlayerTurn() {
@@ -51,13 +79,8 @@ struct PlayerSideView: View {
         }
     }    
     func isCurrentPlayerTurn() -> Bool {
-        if (player.team == .xMark && gameViewModel.turn == .xMark) ||
-            (player.team == .oMark && gameViewModel.turn == .oMark) {
-            return true
-        } else {
-            return false
-        }
-        
+        (player.team == .xMark && gameViewModel.turn == .xMark) ||
+        (player.team == .oMark && gameViewModel.turn == .oMark)
     }
 
 }

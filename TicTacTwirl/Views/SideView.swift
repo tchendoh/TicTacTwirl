@@ -33,7 +33,7 @@ struct SideView: View {
                             }
                         }
                     }
-                    .padding(.top, 100)
+//                    .padding(.top, 100)
                 }
             }
         }

@@ -34,26 +34,50 @@ import Observation
         game.startGame()
     }
     
+    func areBothPlayersReady() -> Bool {
+        game.areBothPlayersReady()
+    }
+
+    func areBothPlayersGettingReady() -> Bool {
+        game.areBothPlayersGettingReady()
+    }
+
     func setTopPlayerAsReady() {
         game.player1.setAsReady()
-        if game.areBothPlayersReady() {
+        if areBothPlayersReady() {
             startGame()
         }
     }
-
+    
     func setBottomPlayerAsReady() {
         game.player2.setAsReady()
         if game.areBothPlayersReady() {
             startGame()
         }
     }
-
+    
     func setTopPlayerAsNotReady() {
         game.player1.setAsNotReady()
     }
     
     func setBottomPlayerAsNotReady() {
         game.player2.setAsNotReady()
+    }
+
+    func setTopPlayerAsGettingReady() {
+        game.player1.setAsGettingReady()
+    }
+
+    func setBottomPlayerAsGettingReady() {
+        game.player2.setAsGettingReady()
+    }
+
+    func setTopPlayerAsNotGettingReady() {
+        game.player1.setAsNotGettingReady()
+    }
+    
+    func setBottomPlayerAsNotGettingReady() {
+        game.player2.setAsNotGettingReady()
     }
     
     func makeMove(position: SquarePosition) {
