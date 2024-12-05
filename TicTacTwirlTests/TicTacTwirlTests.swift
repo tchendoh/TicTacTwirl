@@ -111,6 +111,15 @@ final class TicTacTwirlTests: XCTestCase {
         XCTAssertFalse(game.player2.isReady)
     }
 
+    func test_Game_StartGame_ShouldKnowWhenBothPlayersAreNotReady() throws {
+        var game = Game()
+
+        game.player1.setAsReady()
+        game.player1.setAsNotReady()
+        game.player2.setAsReady()
+        XCTAssertFalse(game.areBothPlayersReady())
+    }
+
     func test_Game_StartGame_ShouldKnowWhenBothPlayersAreReady() throws {
         var game = Game()
 
@@ -330,11 +339,5 @@ final class TicTacTwirlTests: XCTestCase {
         XCTAssertTrue(game.winningLine.contains(.topLeft))
         XCTAssertTrue(game.winningLine.contains(.middle))
         XCTAssertTrue(game.winningLine.contains(.bottomRight))
-    }
-
-    func test_Game_WinningMove_ShouldSetGameOverStatus() throws {
-    }
-
-    func test_Game_WinningMove_ShouldSetCorrectWinningLine() throws {
     }
 }
