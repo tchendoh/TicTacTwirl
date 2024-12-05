@@ -22,8 +22,17 @@ enum SquarePosition: CaseIterable {
 struct Player {
     var team: Game.Team = .notPickedYet
     var isReady: Bool = false
+    var isGettingReady: Bool = false
     var score: Int = 0
+
+    mutating func setAsGettingReady() {
+        isGettingReady = true
+    }
     
+    mutating func setAsNotGettingReady() {
+        isGettingReady = false
+    }
+
     mutating func setAsReady() {
         isReady = true
     }
@@ -114,6 +123,10 @@ struct Game {
 
     func areBothPlayersReady() -> Bool {
         player1.isReady && player2.isReady
+    }
+
+    func areBothPlayersGettingReady() -> Bool {
+        player1.isGettingReady && player2.isGettingReady
     }
 
     mutating func makeMove(position: SquarePosition) {
