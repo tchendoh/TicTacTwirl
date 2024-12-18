@@ -80,7 +80,7 @@ import Observation
         game.player2.setAsNotGettingReady()
     }
     
-    func makeMove(position: SquarePosition) {
-        game.makeMove(position: position)
+    func makeMove(position: SquarePosition, player: Player) {
+        game.makeMove(position: position, player: player)
     }
 }

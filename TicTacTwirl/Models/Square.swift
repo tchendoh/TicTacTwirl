@@ -1,13 +1,25 @@
 //
 //  Square.swift
-//  tic-tac-twirl
+//  TicTacTwirl
 //
-//  Created by Eric Chandonnet on 2024-10-17.
+//  Created by Eric Chandonnet on 2024-12-05.
 //
 
 import Foundation
 
-enum SquareValue {
+enum SquarePosition: CaseIterable {
+    case topLeft
+    case topMiddle
+    case topRight
+    case middleLeft
+    case middle
+    case middleRight
+    case bottomLeft
+    case bottomMiddle
+    case bottomRight
+}
+
+enum SquareMark {
     case xMark
     case oMark
     case expiringX
@@ -15,8 +27,7 @@ enum SquareValue {
     case empty
 }
 
-struct Square {
-    let position: SquarePosition
-    var value: SquareValue
-    var age: Int
+struct SquareValue {
+    var mark: SquareMark = .empty
+    var theme: Player.Theme?
 }

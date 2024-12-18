@@ -15,6 +15,7 @@ struct TicTacTwirlApp: App {
         WindowGroup {
             ContentView()
                 .environment(gameViewModel)
+                .statusBarHidden(true)
         }
     }
 }

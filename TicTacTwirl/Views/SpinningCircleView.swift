@@ -19,7 +19,7 @@ struct SpinningCircleView: View {
     @State private var circleHeight: CGFloat = 120
     @State private var counter = 0.0
     @State private var startTime = 0.0
-    private let timeToBeReady = 3.7
+    private let timeToBeReady = 1.0
     
     let timer = Timer.publish(every: 0.2, tolerance: 0.2, on: .main, in: .common).autoconnect()
     
@@ -29,24 +29,24 @@ struct SpinningCircleView: View {
                 Spacer()
                 ZStack {
                     ArcShape(startAngle: .degrees(10), endAngle: .degrees(330))
-                        .stroke(Color(isReversed ? "TeamRed1" : "TeamBlue1"), style: StrokeStyle(lineWidth: circleHeight / 5, lineCap: .round))
+                        .stroke(Color(isReversed ? "TeamVioletHighlight" : "TeamJinxHighlight"),
+                                style: StrokeStyle(lineWidth: circleHeight / 5, lineCap: .round))
                         .frame(width: circleHeight - 10, height: circleHeight - 10)
                         .rotationEffect(.degrees(isRotating ? 360 : 0))
                         .animation(.linear(duration: 1.6).repeatForever(autoreverses: false), value: isRotating)
-                        .scaleEffect(isPulsing ? 1.2 : 1.0)
-                        .animation(.easeInOut(duration: 0.3).repeatForever(autoreverses: true), value: isPulsing)
                         .onAppear {
                             isRotating = true
                             isPulsing = false
                         }
                         .opacity(isPressed ? 1 : 0)
-                        .shadow(color: Color(isReversed ? "TeamRed1" : "TeamBlue1"), radius: 4)
+                        .shadow(color: Color(isReversed ? "TeamVioletHighlight" : "TeamJinxHighlight"), radius: 6)
                     
                     Image(systemName: "touchid")
                         .font(.system(size: circleHeight * 0.5))
                         .symbolRenderingMode(.palette)
-                        .foregroundStyle(Color(isReversed ? "TeamRed1" : "TeamBlue1"), Color(isReversed ? "TeamRed1" : "TeamBlue1"))
-                        .shadow(color: Color(isReversed ? "TeamRed1" : "TeamBlue1"), radius: isPressed ? 4 : 0)
+                        .foregroundStyle(Color(isReversed ? "TeamVioletSkin1" : "TeamJinxSkin1"),
+                                         Color(isReversed ? "TeamVioletSkin2" : "TeamJinxSkin2"))
+                        .shadow(color: Color(isReversed ? "TeamJinxHighlight" : "TeamJinxHighlight"), radius: isPressed ? 4 : 0)
                         .gesture(
                             DragGesture(minimumDistance: 0)
                                 .onChanged { _ in
@@ -57,7 +57,6 @@ struct SpinningCircleView: View {
                                     }
                                 }
                                 .onEnded { _ in
-                                    print("off")
                                     isPressed = false
                                     isPulsing = false
                                     setPlayerAsNotGettingReady()
@@ -141,7 +140,7 @@ struct ArcShape: Shape {
 
 #Preview {
     ZStack {
-        Color("TeamBlue")
+        Color("TeamJinx1")
         SpinningCircleView()
     }
     .environment(GameViewModel())

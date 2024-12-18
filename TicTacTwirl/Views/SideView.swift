@@ -16,24 +16,18 @@ struct SideView: View {
             VStack {
                 ZStack {
                     if isReversed {
-                        Color("TeamRed")
+                        Color("TeamVioletBackground")
                     } else {
-                        Color("TeamBlue")
+                        Color("TeamJinxBackground")
                     }
                     
                     VStack {
                         if gameViewModel.gameStatus == .teamPicking {
                             SpinningCircleView(isReversed: isReversed)
                         } else {
-                            if isReversed {
-                                PlayerSideView(player: gameViewModel.player2)
-                                
-                            } else {
-                                PlayerSideView(player: gameViewModel.player1)
-                            }
+                            PlayerSideView(player: isReversed ? gameViewModel.player1 : gameViewModel.player2, isReversed: isReversed)
                         }
                     }
-//                    .padding(.top, 100)
                 }
             }
         }
