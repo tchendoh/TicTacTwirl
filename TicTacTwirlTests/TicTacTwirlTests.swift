@@ -32,8 +32,8 @@ final class TicTacTwirlTests: XCTestCase {
     func test_Game_InitialState_ShouldHavePlayersNotReady() throws {
         let game = Game()
 
-        XCTAssertFalse(game.player1.isReady)
-        XCTAssertFalse(game.player2.isReady)
+        XCTAssertFalse(game.playerJinx.isReady)
+        XCTAssertFalse(game.playerVi.isReady)
     }
     func test_Game_StartGame_ShouldAssignTeamsRandomlyForPlayer1() throws {
         var xCount = 0
@@ -43,9 +43,9 @@ final class TicTacTwirlTests: XCTestCase {
 
         for _ in 0..<1000 {
             game.assignRandomTeamsToPlayers()
-            if game.player1.team == .xMark {
+            if game.playerJinx.team == .xMark {
                 xCount += 1
-            } else if game.player1.team == .oMark {
+            } else if game.playerJinx.team == .oMark {
                 oCount += 1
             }
         }
@@ -62,9 +62,9 @@ final class TicTacTwirlTests: XCTestCase {
 
         for _ in 0..<1000 {
             game.assignRandomTeamsToPlayers()
-            if game.player2.team == .xMark {
+            if game.playerVi.team == .xMark {
                 xCount += 1
-            } else if game.player2.team == .oMark {
+            } else if game.playerVi.team == .oMark {
                 oCount += 1
             }
         }
@@ -85,48 +85,48 @@ final class TicTacTwirlTests: XCTestCase {
     // MARK: Tests de gestion des joueurs
     func test_Player1_SetAsReady_ShouldUpdateReadyStatus() throws {
         var game = Game()
-        XCTAssertFalse(game.player1.isReady)
-        game.player1.setAsReady()
-        XCTAssertTrue(game.player1.isReady)
+        XCTAssertFalse(game.playerJinx.isReady)
+        game.playerJinx.setAsReady()
+        XCTAssertTrue(game.playerJinx.isReady)
     }
 
     func test_Player2_SetAsReady_ShouldUpdateReadyStatus() throws {
         var game = Game()
-        XCTAssertFalse(game.player2.isReady)
-        game.player2.setAsReady()
-        XCTAssertTrue(game.player2.isReady)
+        XCTAssertFalse(game.playerVi.isReady)
+        game.playerVi.setAsReady()
+        XCTAssertTrue(game.playerVi.isReady)
     }
 
     func test_Player1_SetAsNotReady_ShouldUpdateReadyStatus() throws {
         var game = Game()
-        game.player1.setAsReady()
-        game.player1.setAsNotReady()
-        XCTAssertFalse(game.player1.isReady)
+        game.playerJinx.setAsReady()
+        game.playerJinx.setAsNotReady()
+        XCTAssertFalse(game.playerJinx.isReady)
     }
 
     func test_Player2_SetAsNotReady_ShouldUpdateReadyStatus() throws {
         var game = Game()
-        game.player2.setAsReady()
-        game.player2.setAsNotReady()
-        XCTAssertFalse(game.player2.isReady)
+        game.playerVi.setAsReady()
+        game.playerVi.setAsNotReady()
+        XCTAssertFalse(game.playerVi.isReady)
     }
 
     func test_Game_StartGame_ShouldKnowWhenBothPlayersAreNotReady() throws {
         var game = Game()
 
-        game.player1.setAsReady()
-        game.player1.setAsNotReady()
-        game.player2.setAsReady()
+        game.playerJinx.setAsReady()
+        game.playerJinx.setAsNotReady()
+        game.playerVi.setAsReady()
         XCTAssertFalse(game.areBothPlayersReady())
     }
 
     func test_Game_StartGame_ShouldKnowWhenBothPlayersAreReady() throws {
         var game = Game()
 
-        game.player1.setAsReady()
+        game.playerJinx.setAsReady()
         XCTAssertFalse(game.areBothPlayersReady())
 
-        game.player2.setAsReady()
+        game.playerVi.setAsReady()
         XCTAssertTrue(game.areBothPlayersReady())
     }
 
